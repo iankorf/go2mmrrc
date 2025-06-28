@@ -2,6 +2,7 @@ import argparse
 import csv
 import gzip
 import json
+import re
 
 def table_reader(file, delim, kidx, vidx):
 	data = {}
@@ -29,6 +30,7 @@ go2mmrrc = {}
 for go_id, mgi_ids in go2mgi.items():
 	if not go_id.startswith('GO'): continue
 	for mgi_id in mgi_ids:
+		if not re.match(r'^MGI:\d+$', mgi_id): continue
 		if mgi_id not in mgi2mmrrc: continue
 		for mmrrc_id in mgi2mmrrc[mgi_id]:
 			if go_id not in go2mmrrc: go2mmrrc[go_id] = []
