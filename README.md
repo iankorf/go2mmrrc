@@ -1,16 +1,40 @@
 go2mrrc
 =======
 
+## Simple Version ##
+
 Each GO term is associated with many MMRRC strains. To see a brief report use
 the following command.
 
-```python
+```
 python3 go2mmrrc.py mmrrc_catalog_data.csv.gz mgi_header.tsv.gz
 ```
 
 If you want to see everything in JSON, do this.
 
-
-```python
+```
 python3 go2mmrrc.py mmrrc_catalog_data.csv.gz mgi_header.tsv.gz --json
 ```
+
+## Persistent Version ##
+
+Build test database (reads 5k records from each file). Takes a couple seconds.
+
+```
+python3 gommsql.py create --mmrrc mmrrc_catalog_data.csv.gz --mgi mgi_header.tsv.gz --testing
+```
+
+Query database with a couple GO identifiers. Writes JSON to stdout.
+
+```
+python3 gommsql.py query GO:0005102 GO:0006654
+```
+
+Complete build. Takes a couple minutes. Uses 695M in filesystem.
+
+```
+rm g2m.db
+python3 gommsql.py create --mmrrc mmrrc_catalog_data.csv.gz --mgi mgi_header.tsv.gz
+python3 gommsql.py query GO:0000036 GO:0019202
+```
+
