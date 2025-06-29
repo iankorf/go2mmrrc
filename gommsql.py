@@ -32,7 +32,6 @@ def create_database(arg):
 	con = sqlite3.connect(arg.database)
 	cur = con.cursor()
 	cur.execute('CREATE TABLE go2mm(goid, mmid)')
-	cur.execute('CREATE INDEX idx ON go2mm(goid, mmid)')
 	con.commit()
 
 	go2mmrrc = {}
@@ -48,7 +47,7 @@ def create_database(arg):
 	for goid, mmids in go2mmrrc.items():
 		for mmid in mmids:
 			cur.execute(f'INSERT INTO go2mm VALUES("{goid}","{mmid}")')
-		con.commit()
+	con.commit()
 
 def query_database(arg):
 	con = sqlite3.connect(arg.database)

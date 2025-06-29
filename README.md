@@ -18,7 +18,7 @@ python3 go2mmrrc.py mmrrc_catalog_data.csv.gz mgi_header.tsv.gz --json
 
 ## Persistent Version ##
 
-Build test database (reads 5k records from each file). Takes a couple seconds.
+Build test database (reads only 5k records from each file).
 
 ```
 python3 gommsql.py create --mmrrc mmrrc_catalog_data.csv.gz --mgi mgi_header.tsv.gz --testing
@@ -30,7 +30,7 @@ Query database with a couple GO identifiers. Writes JSON to stdout.
 python3 gommsql.py query GO:0005102 GO:0006654
 ```
 
-Complete build. Takes a couple minutes. Uses 695M in filesystem.
+Complete build. Takes a minute to run. Uses ~300M in filesystem.
 
 ```
 rm g2m.db
