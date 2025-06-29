@@ -38,3 +38,24 @@ python3 gommsql.py create --mmrrc mmrrc_catalog_data.csv.gz --mgi mgi_header.tsv
 python3 gommsql.py query GO:0000036 GO:0019202
 ```
 
+## Dynamic Webpage ##
+
+One-time setup to get python Flask.
+
+```
+conda env create -f env.yml
+```
+
+Some enviroment variables need to be set.
+
+```
+sh setup.sh
+```
+
+Run the web application.
+
+```
+fask run
+```
+
+Navigate web browser to http://127.0.0.1:5000 to see the dynamic demo app.
