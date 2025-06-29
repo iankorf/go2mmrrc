@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Query Result {% endblock %}</h1>
+    {% for record in records %}
+        <div class='record'>
+            <h2>{{ record['GO'] }}</h2>
+            <p>{{ record['MMRRC'] }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
